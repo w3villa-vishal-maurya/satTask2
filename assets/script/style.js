@@ -8,13 +8,25 @@ setTimeout(()=>{
     spin.style.display = "none";
 }, 3000)
 
+const contentContainer = document.getElementById('contentContainer');
+const paragraphs = contentContainer.querySelectorAll('.changing-text');
+let currentIndex = 0;
+
+function showNextContent() {
+  paragraphs[currentIndex].style.display = 'none';
+  currentIndex = (currentIndex + 1) % paragraphs.length;
+  paragraphs[currentIndex].style.display = 'block';
+}
+
+setInterval(showNextContent, 3000);
+
 
 $('.herosection').owlCarousel({
     loop:true,
     margin:10,
     nav:true,
     autoplay: true,
-    autoplayTimeout: 2000,
+    autoplayTimeout: 3000,
     responsive:{
         0:{
             items:1
